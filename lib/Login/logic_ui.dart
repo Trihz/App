@@ -10,7 +10,8 @@ class LoginUI extends StatefulWidget {
 
 class _LoginUIState extends State<LoginUI> {
   /// defining the main colors
-  Color mainColor = const Color.fromARGB(255, 23, 85, 25);
+  Color mainColor = const Color.fromARGB(255, 43, 145, 46);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,8 +29,8 @@ class _LoginUIState extends State<LoginUI> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      height: 40,
-                      width: 200,
+                      height: 30,
+                      width: 180,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/company_logo.png'),
@@ -48,14 +49,12 @@ class _LoginUIState extends State<LoginUI> {
                 children: [
                   Container(
                     height: MediaQuery.of(context).size.height * 0.05,
-                    width: MediaQuery.of(context).size.width * 1,
+                    width: MediaQuery.of(context).size.width * 0.8,
                     decoration: const BoxDecoration(color: Colors.white),
-                    child: const Center(
-                      child: Text(
-                        "LOGIN",
-                        style: TextStyle(
-                            fontSize: 17, fontWeight: FontWeight.w900),
-                      ),
+                    child: const Text(
+                      "LOGIN",
+                      style:
+                          TextStyle(fontSize: 17, fontWeight: FontWeight.w900),
                     ),
                   ),
                   Column(
@@ -184,7 +183,7 @@ class _LoginUIState extends State<LoginUI> {
                           foregroundColor: Colors.white,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
+                                  BorderRadius.all(Radius.circular(5)))),
                       child: const Text(
                         "LOGIN",
                         style: TextStyle(

@@ -9,7 +9,7 @@ class SignUpUI extends StatefulWidget {
 
 class _SignUpUIState extends State<SignUpUI> {
   /// defining the main colors
-  Color mainColor = const Color.fromARGB(255, 23, 85, 25);
+  Color mainColor = const Color.fromARGB(255, 43, 145, 46);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class _SignUpUIState extends State<SignUpUI> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      height: 40,
-                      width: 200,
+                      height: 30,
+                      width: 180,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage('assets/company_logo.png'),
@@ -291,7 +291,7 @@ class _SignUpUIState extends State<SignUpUI> {
                           foregroundColor: Colors.white,
                           shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
+                                  BorderRadius.all(Radius.circular(5)))),
                       child: const Text(
                         "SIGN UP",
                         style: TextStyle(
