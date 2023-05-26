@@ -8,7 +8,7 @@ class NavDrawer extends StatefulWidget {
 }
 
 class _NavDrawerState extends State<NavDrawer> {
-  Color mainColor = Color.fromARGB(255, 43, 145, 46);
+  Color mainColor = const Color.fromARGB(255, 43, 145, 46);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +19,6 @@ class _NavDrawerState extends State<NavDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           SizedBox(height: MediaQuery.of(context).size.height * 0.07),
-          ListTile(
-            leading: Image.asset('assets/pdf.png'),
-            title: const Text(
-              "Manuals",
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-            ),
-            onTap: () => {Navigator.pushNamed(context, '/manuals')},
-          ),
           ListTile(
             leading: Image.asset('assets/weather.png'),
             title: const Text(
@@ -57,7 +49,7 @@ class _NavDrawerState extends State<NavDrawer> {
               "Issues",
               style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
-            onTap: () => {},
+            onTap: () => {Navigator.pushNamed(context, '/issues')},
           ),
           ListTile(
             leading: Image.asset('assets/pests_diseases.png'),
@@ -66,6 +58,28 @@ class _NavDrawerState extends State<NavDrawer> {
               style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
             ),
             onTap: () => {},
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.53),
+          Center(
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.04,
+              width: MediaQuery.of(context).size.width * 0.4,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.task),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/manuals');
+                      },
+                      child: Icon(Icons.picture_as_pdf)),
+                  Icon(Icons.help)
+                ],
+              ),
+            ),
           ),
         ],
       ),

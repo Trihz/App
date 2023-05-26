@@ -102,8 +102,8 @@ class _HomepageUIState extends State<HomepageUI> {
   /// widget to display the icons container
   Widget iconsContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.15,
-      width: MediaQuery.of(context).size.width * 0.92,
+      height: MediaQuery.of(context).size.height * 0.12,
+      width: MediaQuery.of(context).size.width * 0.8,
       margin: const EdgeInsets.only(top: 20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -160,12 +160,12 @@ class _HomepageUIState extends State<HomepageUI> {
                         width: 25,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/quadcopter.png'),
+                            image: AssetImage('assets/drone.png'),
                             fit: BoxFit.fill,
                           ),
                         )),
                     const Text(
-                      "Drone",
+                      "Imagery",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
                     ),
@@ -197,7 +197,7 @@ class _HomepageUIState extends State<HomepageUI> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/account');
+                  Navigator.pushNamed(context, '/weather');
                 },
                 child: Column(
                   children: [
@@ -206,12 +206,12 @@ class _HomepageUIState extends State<HomepageUI> {
                         width: 25,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('assets/user.png'),
+                            image: AssetImage('assets/weather.png'),
                             fit: BoxFit.fill,
                           ),
                         )),
                     const Text(
-                      "My Account",
+                      "Weather",
                       style:
                           TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
                     ),
@@ -253,7 +253,7 @@ class _HomepageUIState extends State<HomepageUI> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.3,
       width: MediaQuery.of(context).size.width * 0.9,
-      margin: const EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 10),
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -364,7 +364,7 @@ class _HomepageUIState extends State<HomepageUI> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.3,
       width: MediaQuery.of(context).size.width * 0.9,
-      margin: const EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 10),
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -483,11 +483,13 @@ class _HomepageUIState extends State<HomepageUI> {
         ),
         child: Column(
           children: [
-            companylogo(),
             topContainer(),
             iconsContainer(),
             latestNews(),
-            trendingCourses()
+            trendingCourses(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
+            )
           ],
         ),
       ),

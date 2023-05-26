@@ -14,7 +14,7 @@ class _SoilAnalysisUIState extends State<SoilAnalysisUI> {
   /// widget to display the top contiainer
   Widget topContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.08,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: const BoxDecoration(color: Colors.white),
       child: Row(
@@ -31,15 +31,17 @@ class _SoilAnalysisUIState extends State<SoilAnalysisUI> {
             ),
           ),
           Container(
-              height: 28,
-              width: 130,
-              margin: const EdgeInsets.only(top: 7),
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/company_logo.png'),
-                  fit: BoxFit.fill,
-                ),
-              ))
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.65,
+            decoration: const BoxDecoration(color: Colors.white),
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Soil Analysis Request",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -54,18 +56,6 @@ class _SoilAnalysisUIState extends State<SoilAnalysisUI> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            padding: const EdgeInsets.only(left: 10),
-            child: const Align(
-              alignment: Alignment.centerLeft,
-              child: Center(
-                child: Text(
-                  "Soil Analysis Request",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-          ),
           Container(
               height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width * 0.9,

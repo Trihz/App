@@ -1,3 +1,4 @@
+import 'package:agrogis/cart/cart_logic.dart';
 import 'package:flutter/material.dart';
 
 class CartUI extends StatefulWidget {
@@ -9,7 +10,11 @@ class CartUI extends StatefulWidget {
 
 class _CartUIState extends State<CartUI> {
   /// defining the main colors
-  Color mainColor = Color.fromARGB(255, 43, 145, 46);
+  Color mainColor = const Color.fromARGB(255, 43, 145, 46);
+
+  /// list for storing the subscritpions
+  List subscriptions1Values = [];
+  List subscriptions2Values = [];
 
   /// widget to display the safearea
   Widget safeArea() {
@@ -98,7 +103,7 @@ class _CartUIState extends State<CartUI> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/account');
+                      Navigator.pushNamed(context, '/myplans');
                     },
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.04,
@@ -137,142 +142,154 @@ class _CartUIState extends State<CartUI> {
               width: MediaQuery.of(context).size.width * 0.95,
               decoration: const BoxDecoration(color: Colors.white),
               child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: subscriptions1Values.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    return Stack(
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.29,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.4),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: const Offset(0, 1),
-                                ),
-                              ],
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5))),
-                          child: Column(
-                            children: [
-                              Container(
-                                  height: 70,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.45,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(5),
-                                        topRight: Radius.circular(5)),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/subscription_photo.png'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  )),
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.1,
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                margin: const EdgeInsets.only(
-                                    right: 10, left: 10, bottom: 5, top: 10),
-                                padding:
-                                    const EdgeInsets.only(left: 5, right: 3),
-                                decoration: const BoxDecoration(
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.29,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              decoration: BoxDecoration(
                                   color: Colors.white,
-                                ),
-                                child: const Text(
-                                  "AgroGIS Starter AgroGIS starter is the solution for small farms up to 50 hectares...",
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color.fromARGB(
+                                              255, 119, 119, 119)
+                                          .withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ],
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5))),
+                              child: Column(
                                 children: [
                                   Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.28,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "AgroGIS Eye",
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            color: mainColor,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ),
+                                      height: 80,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.45,
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(5),
+                                            topRight: Radius.circular(5)),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/subscription_photo.png'),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      )),
                                   Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.15,
-                                    margin: const EdgeInsets.only(right: 5),
-                                    decoration: BoxDecoration(
-                                        color: mainColor,
-                                        borderRadius: const BorderRadius.only(
-                                            topRight: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20))),
-                                    child: const Center(
-                                      child: Text(
-                                        "125€",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                        0.1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    margin: const EdgeInsets.only(
+                                        right: 10,
+                                        left: 10,
+                                        bottom: 5,
+                                        top: 10),
+                                    padding: const EdgeInsets.only(
+                                        left: 5, right: 3),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
                                     ),
-                                  )
+                                    child: Text(
+                                      subscriptions1Values[index][1],
+                                      style: const TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.15,
+                                        margin: const EdgeInsets.only(right: 5),
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white),
+                                        child: Center(
+                                          child: Text(
+                                            subscriptions1Values[index][2],
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          padding: const EdgeInsets.only(top: 4, bottom: 4),
-                          margin: const EdgeInsets.only(
-                              right: 10, left: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: const Offset(0, 1),
-                                ),
-                              ],
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(0))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/cart.png"),
-                              const SizedBox(width: 10),
-                              const Text(
-                                "ADD TO CART",
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              padding: const EdgeInsets.only(top: 4, bottom: 4),
+                              margin: const EdgeInsets.only(
+                                  right: 10, left: 10, bottom: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ],
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(0))),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/cart.png"),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    "ADD TO CART",
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                        color: mainColor),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+                        Positioned(
+                          top: 3,
+                          left: 10,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                                color: mainColor,
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                subscriptions1Values[index][0],
+                                style: const TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     );
                   })),
@@ -283,142 +300,154 @@ class _CartUIState extends State<CartUI> {
               width: MediaQuery.of(context).size.width * 0.95,
               decoration: const BoxDecoration(color: Colors.white),
               child: ListView.builder(
-                  itemCount: 3,
+                  itemCount: subscriptions2Values.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    return Stack(
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.29,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.4),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: const Offset(0, 1),
-                                ),
-                              ],
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(5))),
-                          child: Column(
-                            children: [
-                              Container(
-                                  height: 70,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.45,
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(5),
-                                        topRight: Radius.circular(5)),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'assets/subscription_photo.png'),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  )),
-                              Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.1,
-                                width: MediaQuery.of(context).size.width * 0.5,
-                                margin: const EdgeInsets.only(
-                                    right: 10, left: 10, bottom: 5, top: 10),
-                                padding:
-                                    const EdgeInsets.only(left: 5, right: 3),
-                                decoration: const BoxDecoration(
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.29,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              decoration: BoxDecoration(
                                   color: Colors.white,
-                                ),
-                                child: const Text(
-                                  "AgroGIS Starter AgroGIS starter is the solution for small farms up to 50 hectares...",
-                                  style: TextStyle(
-                                      fontSize: 11,
-                                      fontWeight: FontWeight.w300),
-                                ),
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: const Color.fromARGB(
+                                              255, 119, 119, 119)
+                                          .withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ],
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(5))),
+                              child: Column(
                                 children: [
                                   Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.28,
-                                    decoration: const BoxDecoration(
-                                      color: Colors.transparent,
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "AgroGIS Eye",
-                                        style: TextStyle(
-                                            fontSize: 11,
-                                            color: mainColor,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ),
-                                  ),
+                                      height: 80,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.45,
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(5),
+                                            topRight: Radius.circular(5)),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/subscription_photo.png'),
+                                          fit: BoxFit.fill,
+                                        ),
+                                      )),
                                   Container(
                                     height: MediaQuery.of(context).size.height *
-                                        0.05,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.15,
-                                    margin: const EdgeInsets.only(right: 5),
-                                    decoration: BoxDecoration(
-                                        color: mainColor,
-                                        borderRadius: const BorderRadius.only(
-                                            topRight: Radius.circular(20),
-                                            bottomLeft: Radius.circular(20))),
-                                    child: const Center(
-                                      child: Text(
-                                        "65€",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
-                                      ),
+                                        0.1,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    margin: const EdgeInsets.only(
+                                        right: 10,
+                                        left: 10,
+                                        bottom: 5,
+                                        top: 10),
+                                    padding: const EdgeInsets.only(
+                                        left: 5, right: 3),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
                                     ),
-                                  )
+                                    child: Text(
+                                      subscriptions2Values[index][1],
+                                      style: const TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.04,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.15,
+                                        margin: const EdgeInsets.only(right: 5),
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white),
+                                        child: Center(
+                                          child: Text(
+                                            subscriptions2Values[index][2],
+                                            style: TextStyle(
+                                                color: mainColor,
+                                                fontSize: 12,
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.03,
-                          width: MediaQuery.of(context).size.width * 0.45,
-                          padding: const EdgeInsets.only(top: 4, bottom: 4),
-                          margin: const EdgeInsets.only(
-                              right: 10, left: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 1,
-                                  offset: const Offset(0, 1),
-                                ),
-                              ],
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(0))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/cart.png"),
-                              const SizedBox(width: 10),
-                              const Text(
-                                "ADD TO CART",
-                                style: TextStyle(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.black),
+                            ),
+                            Container(
+                              height: MediaQuery.of(context).size.height * 0.04,
+                              width: MediaQuery.of(context).size.width * 0.45,
+                              padding: const EdgeInsets.only(top: 4, bottom: 4),
+                              margin: const EdgeInsets.only(
+                                  right: 10, left: 10, bottom: 5),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.2),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: const Offset(0, 1),
+                                    ),
+                                  ],
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(0))),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset("assets/cart.png"),
+                                  const SizedBox(width: 10),
+                                  Text(
+                                    "ADD TO CART",
+                                    style: TextStyle(
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                        color: mainColor),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
+                        Positioned(
+                          top: 3,
+                          left: 10,
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * 0.05,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            decoration: BoxDecoration(
+                                color: mainColor,
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(5),
+                                    bottomRight: Radius.circular(10))),
+                            child: Center(
+                              child: Text(
+                                subscriptions2Values[index][0],
+                                style: const TextStyle(
+                                    fontSize: 11,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     );
                   })),
@@ -427,6 +456,15 @@ class _CartUIState extends State<CartUI> {
         ),
       ),
     );
+  }
+
+  /// initial function of this screen
+  @override
+  void initState() {
+    subscriptions1Values = CartLogic().getSubscriptions1Values();
+    subscriptions2Values = CartLogic().getSubscriptions2Values();
+    print(subscriptions1Values);
+    super.initState();
   }
 
   @override

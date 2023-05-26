@@ -14,10 +14,11 @@ class _ManualsUIState extends State<ManualsUI> {
   /// widget to display the top contiainer
   Widget topContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.08,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: const BoxDecoration(color: Colors.white),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
             onTap: () {
@@ -25,7 +26,20 @@ class _ManualsUIState extends State<ManualsUI> {
             },
             child: const Icon(
               Icons.arrow_back_ios,
-              size: 15,
+              size: 20,
+              color: Colors.black,
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.1,
+            width: MediaQuery.of(context).size.width * 0.55,
+            decoration: const BoxDecoration(color: Colors.white),
+            child: const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Manuals",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+              ),
             ),
           )
         ],
