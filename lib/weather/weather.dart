@@ -1,7 +1,8 @@
-import 'package:agrogis/weather/weather_dataclass.dart';
+import 'package:agrogis/weather/weather_logic.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+
+/// variable to store the weather forecast farm details
+List farmWeatherForecastDetails = [];
 
 class Weather extends StatefulWidget {
   const Weather({super.key});
@@ -16,6 +17,7 @@ class _WeatherState extends State<Weather> {
 
   @override
   void initState() {
+    farmWeatherForecastDetails = WeatherLogic().getForecastDetails();
     super.initState();
   }
 
@@ -24,7 +26,7 @@ class _WeatherState extends State<Weather> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.08,
       width: MediaQuery.of(context).size.width * 0.9,
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(color: Colors.transparent),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -35,18 +37,21 @@ class _WeatherState extends State<Weather> {
             child: const Icon(
               Icons.arrow_back_ios,
               size: 20,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.1,
             width: MediaQuery.of(context).size.width * 0.6,
-            decoration: const BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.transparent),
             child: const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 "Weather Forecast",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
               ),
             ),
           )
@@ -58,7 +63,7 @@ class _WeatherState extends State<Weather> {
   /// widget to display the top container
   Widget topContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.2,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
           color: Colors.white,
@@ -75,7 +80,7 @@ class _WeatherState extends State<Weather> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.15,
+            height: MediaQuery.of(context).size.height * 0.1,
             width: MediaQuery.of(context).size.width * 1,
             padding: const EdgeInsets.only(left: 5),
             decoration: const BoxDecoration(color: Colors.transparent),
@@ -92,7 +97,7 @@ class _WeatherState extends State<Weather> {
                   ],
                 ),
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.05,
                   width: MediaQuery.of(context).size.width * 1,
                   decoration: const BoxDecoration(color: Colors.white),
                   child: Row(
@@ -105,7 +110,7 @@ class _WeatherState extends State<Weather> {
                           child: Text(
                             '17\u00B0C',
                             style: TextStyle(
-                                fontSize: 40, fontWeight: FontWeight.w400),
+                                fontSize: 30, fontWeight: FontWeight.w400),
                           ),
                         ),
                       ),
@@ -157,17 +162,17 @@ class _WeatherState extends State<Weather> {
                     ],
                   ),
                 ),
-                const Divider(
-                  height: 0.4,
-                  color: Color.fromARGB(255, 226, 226, 226),
-                ),
               ],
             ),
           ),
+          const Divider(
+            height: 0.4,
+            color: Color.fromARGB(255, 226, 226, 226),
+          ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.08,
+            height: MediaQuery.of(context).size.height * 0.07,
             width: MediaQuery.of(context).size.width * 1,
-            decoration: const BoxDecoration(color: Colors.white),
+            decoration: const BoxDecoration(color: Colors.transparent),
             child: const Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -229,7 +234,7 @@ class _WeatherState extends State<Weather> {
     return Container(
       height: MediaQuery.of(context).size.height * 0.45,
       width: MediaQuery.of(context).size.width * 1,
-      margin: const EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 30),
       decoration: const BoxDecoration(color: Colors.white),
       child: Column(
         children: [
@@ -250,7 +255,7 @@ class _WeatherState extends State<Weather> {
               color: Colors.transparent,
             ),
             child: ListView.builder(
-                itemCount: 5,
+                itemCount: farmWeatherForecastDetails.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
                   return Container(
@@ -294,25 +299,25 @@ class _WeatherState extends State<Weather> {
                               decoration: const BoxDecoration(
                                 color: Colors.transparent,
                               ),
-                              child: const Column(
+                              child: Column(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Temperatures",
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Text(
-                                        "17\u00B0C",
-                                        style: TextStyle(
+                                        "${farmWeatherForecastDetails[index][1]}\u00B0C",
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
@@ -321,19 +326,19 @@ class _WeatherState extends State<Weather> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Precipitation",
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Text(
-                                        "11mm",
-                                        style: TextStyle(
+                                        "${farmWeatherForecastDetails[index][2]}mm",
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
@@ -342,19 +347,19 @@ class _WeatherState extends State<Weather> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Wind",
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Text(
-                                        "0.86m/s",
-                                        style: TextStyle(
+                                        "${farmWeatherForecastDetails[index][3]}m/s",
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
@@ -363,19 +368,19 @@ class _WeatherState extends State<Weather> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Humidity",
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 20,
                                       ),
                                       Text(
-                                        "96%",
-                                        style: TextStyle(
+                                        "${farmWeatherForecastDetails[index][4]}%",
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
@@ -384,19 +389,19 @@ class _WeatherState extends State<Weather> {
                                   ),
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         "Pressure",
                                         style: TextStyle(
                                             fontSize: 11,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 10,
                                       ),
                                       Text(
-                                        "1016hpa",
-                                        style: TextStyle(
+                                        "${farmWeatherForecastDetails[index][5]}hpa",
+                                        style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w700,
                                             color: Colors.black),
@@ -418,10 +423,10 @@ class _WeatherState extends State<Weather> {
                                   color: mainColor,
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(5))),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  "Corn field",
-                                  style: TextStyle(
+                                  farmWeatherForecastDetails[index][0],
+                                  style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w300,
                                       color: Colors.white),
@@ -444,9 +449,34 @@ class _WeatherState extends State<Weather> {
       body: Container(
         height: MediaQuery.of(context).size.height * 1,
         width: MediaQuery.of(context).size.width * 1,
-        decoration: const BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(color: mainColor),
         child: Column(
-          children: [appBar(), topContainer(), statisticsContainer()],
+          children: [
+            // Top Container
+            Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: BoxDecoration(color: mainColor),
+              child: Column(
+                children: [appBar(), topContainer()],
+              ),
+            ),
+            // Bottom Container
+            Container(
+              height: MediaQuery.of(context).size.height * 0.7,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20.0),
+                  topRight: Radius.circular(20.0),
+                ),
+              ),
+              child: Column(
+                children: [statisticsContainer()],
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -17,7 +17,9 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
     return Container(
       height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width * 0.9,
-      decoration: const BoxDecoration(color: Colors.white),
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -33,12 +35,12 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
           ),
           Container(
             height: MediaQuery.of(context).size.height * 0.1,
-            width: MediaQuery.of(context).size.width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.55,
             decoration: const BoxDecoration(color: Colors.white),
             child: const Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                "Drone Mapping Request",
+                "Imagery",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
               ),
             ),
@@ -52,20 +54,26 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
   Widget showTabBar(TabController tabController) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.04,
-      width: MediaQuery.of(context).size.width * 1,
-      decoration: const BoxDecoration(color: Colors.white),
+      width: MediaQuery.of(context).size.width * 0.9,
+      decoration: BoxDecoration(
+          color: mainColor,
+          borderRadius: const BorderRadius.all(Radius.circular(5))),
       child: TabBar(
           controller: tabController,
           indicatorColor: Colors.transparent,
+          unselectedLabelColor: Colors.black,
+          labelColor: Colors.white,
+          labelStyle:
+              const TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
           tabs: const [
             Tab(
-              text: "Drones",
+              text: "Drone",
             ),
             Tab(
-              text: "Lansat",
+              text: "Landsat 8",
             ),
             Tab(
-              text: "Imagery",
+              text: "Sentinel",
             ),
           ]),
     );
@@ -122,15 +130,14 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                           Container(
                               height: MediaQuery.of(context).size.height * 0.05,
                               width: MediaQuery.of(context).size.width * 0.8,
-                              decoration: const BoxDecoration(
-                                  color: Color.fromARGB(0, 255, 255, 255)),
+                              decoration: const BoxDecoration(),
                               child: TextField(
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -174,7 +181,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -218,7 +225,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -262,7 +269,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -306,7 +313,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -350,7 +357,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -394,7 +401,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
                                     borderSide: BorderSide(
                                         color: mainColor, width: 0.2),
                                     borderRadius: const BorderRadius.all(
-                                        Radius.circular(0)),
+                                        Radius.circular(5)),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -454,7 +461,7 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
   /// widget to display the cancel and request buttons container
   Widget cancelRequestButton() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.07,
       width: MediaQuery.of(context).size.width * 1,
       decoration: const BoxDecoration(color: Colors.white),
       child: Row(
@@ -467,13 +474,14 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: mainColor,
-                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.grey.shade300,
+                    foregroundColor: Colors.black,
+                    shadowColor: Colors.grey,
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)))),
                 child: const Text(
                   "CANCEL",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                 ),
               )),
           Container(
@@ -483,13 +491,14 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: mainColor,
-                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.grey.shade300,
+                    foregroundColor: Colors.black,
+                    shadowColor: Colors.grey,
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)))),
                 child: const Text(
                   "PLACE REQUEST",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w300),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                 ),
               )),
         ],

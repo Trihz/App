@@ -13,33 +13,19 @@ class _HomepageUIState extends State<HomepageUI> {
   Color mainColor = const Color.fromARGB(255, 43, 145, 46);
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
-  /// widget to display the company logo
-  Widget companylogo() {
-    return Container(
-        height: 28,
-        width: 130,
-        margin: const EdgeInsets.only(top: 7),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/company_logo.png'),
-            fit: BoxFit.fill,
-          ),
-        ));
-  }
-
   /// wdget to display the top container
   Widget topContainer() {
     return Container(
       height: MediaQuery.of(context).size.height * 0.09,
       width: MediaQuery.of(context).size.width * 0.95,
-      margin: const EdgeInsets.only(right: 3, left: 3, top: 10),
+      margin: const EdgeInsets.only(right: 3, left: 3, top: 0),
       decoration: BoxDecoration(
         color: mainColor,
         borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(5),
-          bottomRight: Radius.circular(5),
-          topLeft: Radius.circular(5),
-          topRight: Radius.circular(5),
+          bottomLeft: Radius.circular(0),
+          bottomRight: Radius.circular(0),
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
         ),
       ),
       child: Row(
@@ -79,6 +65,14 @@ class _HomepageUIState extends State<HomepageUI> {
                 ),
               )),
           GestureDetector(
+            onTap: () {},
+            child: const Icon(
+              Icons.notifications_active,
+              color: Colors.white,
+              size: 25,
+            ),
+          ),
+          GestureDetector(
             onTap: () {
               Navigator.pushNamed(context, '/account');
             },
@@ -88,7 +82,7 @@ class _HomepageUIState extends State<HomepageUI> {
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage('assets/profile.png'),
+                  image: AssetImage('assets/account.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -102,20 +96,11 @@ class _HomepageUIState extends State<HomepageUI> {
   /// widget to display the icons container
   Widget iconsContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.12,
+      height: MediaQuery.of(context).size.height * 0.1,
       width: MediaQuery.of(context).size.width * 0.8,
-      margin: const EdgeInsets.only(top: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.4),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(0, 0),
-          ),
-        ],
-      ),
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.all(Radius.circular(5))),
       child: Center(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.1,
@@ -478,18 +463,45 @@ class _HomepageUIState extends State<HomepageUI> {
       body: Container(
         height: MediaQuery.of(context).size.height * 1,
         width: MediaQuery.of(context).size.width * 1,
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: mainColor,
         ),
         child: Column(
           children: [
-            topContainer(),
-            iconsContainer(),
-            latestNews(),
-            trendingCourses(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            )
+            Container(
+              height: MediaQuery.of(context).size.height * 0.22,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: const BoxDecoration(
+                color: Colors.transparent,
+              ),
+              child: Column(
+                children: [
+                  topContainer(),
+                  iconsContainer(),
+                ],
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.78,
+              width: MediaQuery.of(context).size.width * 1,
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30))),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.01,
+                  ),
+                  latestNews(),
+                  trendingCourses(),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
