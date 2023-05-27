@@ -120,22 +120,27 @@ class _AccountUIState extends State<AccountUI> {
             height: MediaQuery.of(context).size.height * 0.08,
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(color: Colors.transparent),
-            child: const Center(
+            child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Jose Doe",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
                       SizedBox(width: 10),
-                      Icon(
-                        Icons.edit,
-                        size: 20,
+                      GestureDetector(
+                        onTap: () {
+                          editProfileDetails();
+                        },
+                        child: const Icon(
+                          Icons.edit,
+                          size: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -395,5 +400,345 @@ class _AccountUIState extends State<AccountUI> {
         ),
       ),
     );
+  }
+
+  /// method to show the dialog for showing farm details
+  Future editProfileDetails() {
+    return showDialog(
+        useSafeArea: false,
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: Container(
+                height: MediaQuery.of(context).size.height * 0.04,
+                width: MediaQuery.of(context).size.width * 1,
+                decoration: BoxDecoration(
+                  color: mainColor,
+                ),
+                child: const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Edit Profile Details",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+              content: Container(
+                height: MediaQuery.of(context).size.height * 0.6,
+                width: MediaQuery.of(context).size.width * 1,
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                        height: MediaQuery.of(context).size.height * 0.45,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        padding: const EdgeInsets.only(top: 10),
+                        decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "Gmail",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: mainColor),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    decoration: const BoxDecoration(),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.2),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "First Name",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: mainColor),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(0, 255, 255, 255)),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.2),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "Last Name",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: mainColor),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(0, 255, 255, 255)),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.2),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "State",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: mainColor),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(0, 255, 255, 255)),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.2),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, bottom: 5),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      "City",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                          color: mainColor),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.8,
+                                    decoration: const BoxDecoration(
+                                        color:
+                                            Color.fromARGB(0, 255, 255, 255)),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.2),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(5)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: mainColor, width: 0.5),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(0)),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+              actions: <Widget>[
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.04,
+                  width: MediaQuery.of(context).size.width * 1,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey.shade300,
+                              foregroundColor: Colors.black,
+                              shadowColor: Colors.grey),
+                          child: const Text(
+                            "CANCEL",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.04,
+                        width: MediaQuery.of(context).size.width * 0.3,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.grey.shade300,
+                              foregroundColor: Colors.black,
+                              shadowColor: Colors.grey),
+                          child: const Text(
+                            "SAVE",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ));
   }
 }

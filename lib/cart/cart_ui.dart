@@ -145,152 +145,183 @@ class _CartUIState extends State<CartUI> {
                   itemCount: subscriptions1Values.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: ((context, index) {
-                    return Stack(
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.29,
-                              width: MediaQuery.of(context).size.width * 0.45,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color.fromARGB(
-                                              255, 119, 119, 119)
-                                          .withOpacity(0.2),
-                                      spreadRadius: 1,
-                                      blurRadius: 1,
-                                      offset: const Offset(0, 1),
-                                    ),
-                                  ],
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(5))),
-                              child: Column(
-                                children: [
-                                  Container(
-                                      height: 80,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.45,
-                                      decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(5),
-                                            topRight: Radius.circular(5)),
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/subscription_photo.png'),
-                                          fit: BoxFit.fill,
-                                        ),
-                                      )),
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.1,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.5,
-                                    margin: const EdgeInsets.only(
-                                        right: 10,
-                                        left: 10,
-                                        bottom: 5,
-                                        top: 10),
-                                    padding: const EdgeInsets.only(
-                                        left: 5, right: 3),
-                                    decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                    ),
-                                    child: Text(
-                                      subscriptions1Values[index][1],
-                                      style: const TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.04,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/subscriptiondetails');
+                      },
+                      child: Stack(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.29,
+                                width: MediaQuery.of(context).size.width * 0.45,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: const Color.fromARGB(
+                                                255, 119, 119, 119)
+                                            .withOpacity(0.2),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: const Offset(0, 1),
+                                      ),
+                                    ],
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(5))),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                        height: 80,
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.15,
-                                        margin: const EdgeInsets.only(right: 5),
+                                                0.45,
                                         decoration: const BoxDecoration(
-                                            color: Colors.white),
-                                        child: Center(
-                                          child: Text(
-                                            subscriptions1Values[index][2],
-                                            style: TextStyle(
-                                                color: mainColor,
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w700),
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(5),
+                                              topRight: Radius.circular(5)),
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/subscription_photo.png'),
+                                            fit: BoxFit.fill,
                                           ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.04,
-                              width: MediaQuery.of(context).size.width * 0.45,
-                              padding: const EdgeInsets.only(top: 4, bottom: 4),
-                              margin: const EdgeInsets.only(
-                                  right: 10, left: 10, bottom: 5),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      spreadRadius: 1,
-                                      blurRadius: 1,
-                                      offset: const Offset(0, 1),
+                                        )),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.1,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.5,
+                                      margin: const EdgeInsets.only(
+                                          right: 10,
+                                          left: 10,
+                                          bottom: 5,
+                                          top: 10),
+                                      padding: const EdgeInsets.only(
+                                          left: 5, right: 3),
+                                      decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                      ),
+                                      child: Text(
+                                        subscriptions1Values[index][1],
+                                        style: const TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.04,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.3,
+                                          margin:
+                                              const EdgeInsets.only(right: 5),
+                                          decoration: const BoxDecoration(
+                                              color: Colors.white),
+                                          child: Center(
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  subscriptions1Values[index]
+                                                      [2],
+                                                  style: TextStyle(
+                                                      color: mainColor,
+                                                      fontSize: 12,
+                                                      fontWeight:
+                                                          FontWeight.w700),
+                                                ),
+                                                Text(
+                                                  "VIEW",
+                                                  style: TextStyle(
+                                                      color: mainColor,
+                                                      fontSize: 11,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        )
+                                      ],
                                     ),
                                   ],
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(0))),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset("assets/cart.png"),
-                                  const SizedBox(width: 10),
-                                  Text(
-                                    "ADD TO CART",
-                                    style: TextStyle(
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.w600,
-                                        color: mainColor),
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Positioned(
-                          top: 3,
-                          left: 10,
-                          child: Container(
-                            height: MediaQuery.of(context).size.height * 0.05,
-                            width: MediaQuery.of(context).size.width * 0.28,
-                            decoration: BoxDecoration(
-                                color: mainColor,
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(5),
-                                    bottomRight: Radius.circular(10))),
-                            child: Center(
-                              child: Text(
-                                subscriptions1Values[index][0],
-                                style: const TextStyle(
-                                    fontSize: 11,
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.04,
+                                width: MediaQuery.of(context).size.width * 0.45,
+                                padding:
+                                    const EdgeInsets.only(top: 4, bottom: 4),
+                                margin: const EdgeInsets.only(
+                                    right: 10, left: 10, bottom: 5),
+                                decoration: BoxDecoration(
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w500),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.2),
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: const Offset(0, 1),
+                                      ),
+                                    ],
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(0))),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset("assets/cart.png"),
+                                    const SizedBox(width: 10),
+                                    Text(
+                                      "ADD TO CART",
+                                      style: TextStyle(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w600,
+                                          color: mainColor),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            top: 3,
+                            left: 10,
+                            child: Container(
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              width: MediaQuery.of(context).size.width * 0.28,
+                              decoration: BoxDecoration(
+                                  color: mainColor,
+                                  borderRadius: const BorderRadius.only(
+                                      topLeft: Radius.circular(5),
+                                      bottomRight: Radius.circular(10))),
+                              child: Center(
+                                child: Text(
+                                  subscriptions1Values[index][0],
+                                  style: const TextStyle(
+                                      fontSize: 11,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500),
+                                ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     );
                   })),
             ),

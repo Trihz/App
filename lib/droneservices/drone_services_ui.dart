@@ -448,8 +448,19 @@ class _DroneSevicesUIState extends State<DroneSevicesUI>
             ],
           ),
         ),
-        const Center(
-          child: Text('Landsat'),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.8,
+          width: MediaQuery.of(context).size.width * 1,
+          decoration: const BoxDecoration(color: Colors.white),
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                "Landsat Imagery Chart",
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+              ),
+            ],
+          ),
         ),
         const Center(
           child: Text('Imagery'),

@@ -253,7 +253,7 @@ class _HomepageUIState extends State<HomepageUI> {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Latest News",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),
             ),
           ),
@@ -364,7 +364,7 @@ class _HomepageUIState extends State<HomepageUI> {
               alignment: Alignment.centerLeft,
               child: Text(
                 "Trending Courses",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
               ),
             ),
           ),

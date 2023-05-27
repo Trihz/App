@@ -3,15 +3,18 @@ import 'package:agrogis/SignUp/signup_ui.dart';
 import 'package:agrogis/account/account.dart';
 import 'package:agrogis/bottom_navbar/bottom_navbar_ui.dart';
 import 'package:agrogis/cart/cart_ui.dart';
+import 'package:agrogis/cart/subscription_details.dart';
 import 'package:agrogis/droneservices/drone_services_ui.dart';
 import 'package:agrogis/homepage/homepage_ui.dart';
 import 'package:agrogis/issues/issues.dart';
 import 'package:agrogis/manuals/manuals.dart';
 import 'package:agrogis/myfarm/myfarm.dart';
+import 'package:agrogis/myplans/manage_plane.dart';
 import 'package:agrogis/myplans/myplans.dart';
 import 'package:agrogis/soilanalysis/soilanalysis.dart';
 import 'package:agrogis/splashscreen/splashscreen_ui.dart';
 import 'package:agrogis/weather/weather.dart';
+import 'package:agrogis/weather/weather_stations.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -45,6 +48,9 @@ class _MyAppState extends State<MyApp> {
         '/manuals': (context) => const ManualsUI(),
         '/myplans': (context) => const MyPlans(),
         '/issues': (context) => const IssuesUI(),
+        '/weatherstations': (context) => const WeatherStations(),
+        '/manageplan': (context) => const ManagePlan(),
+        '/subscriptiondetails': (context) => const SubscriptionDetails(),
       },
     );
   }

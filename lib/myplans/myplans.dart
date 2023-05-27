@@ -50,7 +50,7 @@ class _MyPlansState extends State<MyPlans> {
   /// widget for displaying all the plans for the user
   Widget myPlans() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.45,
       width: MediaQuery.of(context).size.width * 0.9,
       padding: const EdgeInsets.only(top: 10),
       decoration: const BoxDecoration(color: Colors.white),
@@ -67,7 +67,7 @@ class _MyPlansState extends State<MyPlans> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.35,
+                          height: MediaQuery.of(context).size.height * 0.4,
                           width: MediaQuery.of(context).size.width * 0.45,
                           decoration: BoxDecoration(
                               color: Colors.white,
@@ -98,7 +98,7 @@ class _MyPlansState extends State<MyPlans> {
                                   )),
                               Container(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.12,
+                                    MediaQuery.of(context).size.height * 0.15,
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 margin: const EdgeInsets.only(
                                     right: 10, left: 10, bottom: 5, top: 19),
@@ -112,39 +112,45 @@ class _MyPlansState extends State<MyPlans> {
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
-                              Container(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.05,
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  margin: const EdgeInsets.only(
-                                      right: 10, left: 10, bottom: 5, top: 5),
-                                  decoration: BoxDecoration(
-                                      color: mainColor,
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(13))),
-                                  child: Center(
-                                    child: Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.045,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.378,
-                                      decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10))),
-                                      child: Center(
-                                        child: Text(
-                                          "Manage Plan",
-                                          style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w500,
-                                              color: mainColor),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/manageplan');
+                                },
+                                child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.05,
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.5,
+                                    margin: const EdgeInsets.only(
+                                        right: 10, left: 10, bottom: 5, top: 5),
+                                    decoration: BoxDecoration(
+                                        color: mainColor,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(13))),
+                                    child: Center(
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.045,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.378,
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(10))),
+                                        child: Center(
+                                          child: Text(
+                                            "Manage Plan",
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w500,
+                                                color: mainColor),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  )),
+                                    )),
+                              ),
                             ],
                           ),
                         ),
@@ -177,15 +183,39 @@ class _MyPlansState extends State<MyPlans> {
                   height: MediaQuery.of(context).size.height * 0.35,
                   width: MediaQuery.of(context).size.width * 0.4,
                   decoration: const BoxDecoration(color: Colors.white),
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Text(
-                        "Include in your Plan",
+                      const Text(
+                        "Included in your Plan",
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
                             color: Colors.black),
                       ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(left: 20),
+                        decoration: const BoxDecoration(color: Colors.white),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset('assets/drone.png'),
+                                const SizedBox(width: 10),
+                                const Text(
+                                  "Landsat",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 )
