@@ -129,71 +129,125 @@ class _ManagePlanState extends State<ManagePlan> {
   /// widget to show the manage plans options
   Widget managePlanOptions() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.4,
+      height: MediaQuery.of(context).size.height * 0.2,
       width: MediaQuery.of(context).size.width * 1,
+      margin: const EdgeInsets.only(top: 20),
       decoration: const BoxDecoration(color: Colors.white),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width * 1,
-              padding: const EdgeInsets.only(top: 10),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.07,
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    decoration: BoxDecoration(
-                        color: mainColor,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(5))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        const Icon(
-                          Icons.remove_circle,
-                          color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/cart');
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(5))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Icon(
+                        Icons.add_circle,
+                        color: Colors.white,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.55,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          width: MediaQuery.of(context).size.width * 0.55,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                          ),
-                          child: const Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "Find the right plan for your needs, and make the switch.",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white),
-                            ),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Find a better plan",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
                           ),
                         ),
-                        Container(
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          width: MediaQuery.of(context).size.width * 0.1,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
                           ),
-                          child: const Center(
-                            child: Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              ))
+                ),
+              ],
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              cancelPlanPrompt();
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.95,
+                  decoration: BoxDecoration(
+                      color: mainColor,
+                      borderRadius: const BorderRadius.all(Radius.circular(5))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Icon(
+                        Icons.remove_circle,
+                        color: Colors.white,
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.55,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "Find the right plan for your needs, and make the switch.",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.1,
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     );
@@ -213,5 +267,59 @@ class _ManagePlanState extends State<ManagePlan> {
         ),
       ),
     );
+  }
+
+  /// method to show the dialog for confirming cancel plan option
+  Future cancelPlanPrompt() {
+    return showDialog(
+        useSafeArea: false,
+        context: context,
+        builder: (ctx) => AlertDialog(
+              content: Container(
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width * 1,
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
+                ),
+                child: const Center(
+                  child: Text(
+                    "Confirm plan cancellation",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black),
+                  ),
+                ),
+              ),
+              actions: <Widget>[
+                Center(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.04,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                    ),
+                    child: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.grey.shade300,
+                            foregroundColor: Colors.black,
+                            shadowColor: Colors.grey),
+                        child: const Text(
+                          "CONFIRM",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ));
   }
 }

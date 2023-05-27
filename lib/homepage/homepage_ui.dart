@@ -19,9 +19,9 @@ class _HomepageUIState extends State<HomepageUI> {
       height: MediaQuery.of(context).size.height * 0.09,
       width: MediaQuery.of(context).size.width * 0.95,
       margin: const EdgeInsets.only(right: 3, left: 3, top: 0),
-      decoration: BoxDecoration(
-        color: mainColor,
-        borderRadius: const BorderRadius.only(
+      decoration: const BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0),
           bottomRight: Radius.circular(0),
           topLeft: Radius.circular(0),
@@ -96,7 +96,7 @@ class _HomepageUIState extends State<HomepageUI> {
   /// widget to display the icons container
   Widget iconsContainer() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
+      height: MediaQuery.of(context).size.height * 0.08,
       width: MediaQuery.of(context).size.width * 0.8,
       decoration: const BoxDecoration(
           color: Colors.white,
@@ -104,7 +104,7 @@ class _HomepageUIState extends State<HomepageUI> {
       child: Center(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.1,
-          padding: const EdgeInsets.only(top: 20),
+          padding: const EdgeInsets.only(top: 10),
           decoration: const BoxDecoration(
             color: Colors.transparent,
           ),
@@ -236,9 +236,9 @@ class _HomepageUIState extends State<HomepageUI> {
   /// widget to display the latest news container
   Widget latestNews() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.26,
       width: MediaQuery.of(context).size.width * 0.9,
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 20),
       decoration: const BoxDecoration(color: Colors.transparent),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -258,7 +258,7 @@ class _HomepageUIState extends State<HomepageUI> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.26,
+            height: MediaQuery.of(context).size.height * 0.22,
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(
               color: Colors.transparent,
@@ -268,7 +268,7 @@ class _HomepageUIState extends State<HomepageUI> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
                   return Container(
-                    height: MediaQuery.of(context).size.height * 0.26,
+                    height: MediaQuery.of(context).size.height * 0.22,
                     width: MediaQuery.of(context).size.width * 0.35,
                     margin: const EdgeInsets.only(
                         right: 10, top: 5, bottom: 5, left: 5),
@@ -283,7 +283,7 @@ class _HomepageUIState extends State<HomepageUI> {
                     child: Column(
                       children: [
                         Container(
-                            height: 80,
+                            height: 60,
                             width: MediaQuery.of(context).size.width * 0.35,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
@@ -312,28 +312,19 @@ class _HomepageUIState extends State<HomepageUI> {
                           height: 10,
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          decoration:
-                              const BoxDecoration(color: Colors.transparent),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/homepage');
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: mainColor,
-                                shadowColor: Colors.grey,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5)))),
-                            child: const Text(
-                              "READ",
-                              style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        )
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            decoration:
+                                const BoxDecoration(color: Colors.transparent),
+                            child: Center(
+                              child: Text(
+                                "READ",
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700,
+                                    color: mainColor),
+                              ),
+                            ))
                       ],
                     ),
                   );
@@ -347,7 +338,7 @@ class _HomepageUIState extends State<HomepageUI> {
   /// Widget to display the trending courses container
   Widget trendingCourses() {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * 0.26,
       width: MediaQuery.of(context).size.width * 0.9,
       margin: const EdgeInsets.only(top: 10),
       decoration: const BoxDecoration(color: Colors.transparent),
@@ -369,7 +360,7 @@ class _HomepageUIState extends State<HomepageUI> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: MediaQuery.of(context).size.height * 0.22,
             width: MediaQuery.of(context).size.width * 1,
             decoration: const BoxDecoration(
               color: Colors.transparent,
@@ -379,7 +370,7 @@ class _HomepageUIState extends State<HomepageUI> {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) {
                   return Container(
-                    height: MediaQuery.of(context).size.height * 0.25,
+                    height: MediaQuery.of(context).size.height * 0.22,
                     width: MediaQuery.of(context).size.width * 0.35,
                     margin: const EdgeInsets.only(
                         right: 10, top: 5, bottom: 5, left: 5),
@@ -394,7 +385,7 @@ class _HomepageUIState extends State<HomepageUI> {
                     child: Column(
                       children: [
                         Container(
-                            height: 80,
+                            height: 60,
                             width: MediaQuery.of(context).size.width * 0.35,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
@@ -423,28 +414,19 @@ class _HomepageUIState extends State<HomepageUI> {
                           height: 10,
                         ),
                         Container(
-                          height: MediaQuery.of(context).size.height * 0.035,
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          decoration:
-                              const BoxDecoration(color: Colors.transparent),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/homepage');
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.white,
-                                foregroundColor: mainColor,
-                                shadowColor: Colors.grey,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5)))),
-                            child: const Text(
-                              "CHECK",
-                              style: TextStyle(
-                                  fontSize: 11, fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        )
+                            height: MediaQuery.of(context).size.height * 0.035,
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            decoration:
+                                const BoxDecoration(color: Colors.transparent),
+                            child: Center(
+                              child: Text(
+                                "CHECK",
+                                style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700,
+                                    color: mainColor),
+                              ),
+                            ))
                       ],
                     ),
                   );
@@ -461,15 +443,17 @@ class _HomepageUIState extends State<HomepageUI> {
       key: scaffoldKey,
       drawer: const NavDrawer(),
       body: Container(
-        height: MediaQuery.of(context).size.height * 1,
+        height: MediaQuery.of(context).size.height * 0.88,
         width: MediaQuery.of(context).size.width * 1,
         decoration: BoxDecoration(
-          color: mainColor,
-        ),
+            gradient: LinearGradient(
+                colors: [mainColor, Colors.white],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter)),
         child: Column(
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.22,
+              height: MediaQuery.of(context).size.height * 0.18,
               width: MediaQuery.of(context).size.width * 1,
               decoration: const BoxDecoration(
                 color: Colors.transparent,
@@ -482,7 +466,7 @@ class _HomepageUIState extends State<HomepageUI> {
               ),
             ),
             Container(
-              height: MediaQuery.of(context).size.height * 0.78,
+              height: MediaQuery.of(context).size.height * 0.7,
               width: MediaQuery.of(context).size.width * 1,
               decoration: const BoxDecoration(
                   color: Colors.white,

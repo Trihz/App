@@ -176,7 +176,7 @@ class _LoginUIState extends State<LoginUI> {
                     decoration: const BoxDecoration(color: Colors.transparent),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/homepage');
+                        Navigator.pushNamed(context, '/landingpage');
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: mainColor,

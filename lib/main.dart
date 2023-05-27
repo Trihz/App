@@ -7,6 +7,7 @@ import 'package:agrogis/cart/subscription_details.dart';
 import 'package:agrogis/droneservices/drone_services_ui.dart';
 import 'package:agrogis/homepage/homepage_ui.dart';
 import 'package:agrogis/issues/issues.dart';
+import 'package:agrogis/landing/landing_page_ui.dart';
 import 'package:agrogis/manuals/manuals.dart';
 import 'package:agrogis/myfarm/myfarm.dart';
 import 'package:agrogis/myplans/manage_plane.dart';
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/signup': (context) => const SignUpUI(),
         '/login': (context) => const LoginUI(),
+        '/landingpage': (context) => const LandingPageUI(),
         '/homepage': (context) => const HomepageUI(),
         '/bottomnavbar': (context) => const BottomNavBar(),
         '/cart': (context) => const CartUI(),
